@@ -6,6 +6,12 @@ use iced::{
 
 pub fn main() -> iced::Result {
     Clock::run(Settings {
+        window: iced::window::Settings{
+        	    decorations: false,
+        	    transparent: true,
+                always_on_top: true,
+        	    ..iced::window::Settings::default()
+        	},
         antialiasing: true,
         ..Settings::default()
     })
@@ -38,6 +44,10 @@ impl Application for Clock {
 
     fn title(&self) -> String {
         String::from("Clock - Iced")
+    }
+
+    fn background_color(&self) -> Color {
+    	Color::TRANSPARENT
     }
 
     fn update(
